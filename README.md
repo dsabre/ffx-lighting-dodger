@@ -32,7 +32,7 @@ https://www.tinkercad.com/things/j4rUc0BTsq0-ffx-lighting-dodger
 
 
 ## Authors
-
+- [swidge (original author)](https://github.com/swidge)
 - [Daniele Sabre](https://dsabre.github.io/resume/)
 
 
