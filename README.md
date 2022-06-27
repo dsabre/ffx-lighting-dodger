@@ -27,6 +27,10 @@ Just build this circuit, then connect the servo to your joystick (use scotch tap
 [See PDF](/pdfs/ffx-lighting-dodger.pdf)
 
 
+## Tinkercad link
+https://www.tinkercad.com/things/j4rUc0BTsq0-ffx-lighting-dodger
+
+
 ## Authors
 
 - [Daniele Sabre](https://dsabre.github.io/resume/)
