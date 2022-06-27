@@ -11,8 +11,7 @@ LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 Servo servo;
 
-int val = 0;
-int dodged = 0;
+int lightVal = 0, dodged = 0, maxLight = 0;
 
 // this value is dependent on the photoresistor and the brightness of your TV
 // you will probably need to test different values here
@@ -23,43 +22,55 @@ int threshold = 350;
 int startDegs = 180;
 int pressDegs = 15;
 
-void updateLCD()
-{
-  lcd.begin(16, 2);
-  lcd.clear();
-  lcd.home();
-  lcd.print("Dodged: ");
-  lcd.print(dodged);
+void updateLCD(){
+	lcd.clear();
+
+	lcd.home();
+	lcd.print("Dodged: ");
+	lcd.print(dodged);
+
+	lcd.setCursor(0, 1);
+	lcd.print("Light val.: ");
+	lcd.print(lightVal);
+	lcd.print("Max light: ");
+	lcd.print(maxLight);
 }
 
-void setup()
-{
-  Serial.begin(9600);
-  Wire.begin();
+void setup(){
+	Serial.begin(9600);
+	Wire.begin();
 
-  pinMode(photoPin, INPUT);
-  servo.attach(servoPin);
-  servo.write(startDegs);
-  updateLCD();
+	pinMode(photoPin, INPUT);
+
+	servo.attach(servoPin);
+	servo.write(startDegs);
+
+	lcd.begin(16, 2);
+	updateLCD();
 }
 
-void loop()
-{
-  val = analogRead(photoPin);
+void loop(){
+	lightVal = analogRead(photoPin);
 
-  // print light value in serial
-  Serial.println(val); 
+	// print light value in serial
+	Serial.println(lightVal);
+  
+	if(lightVal > maxLight){
+		maxLight = lightVal;
+	}
 
-  if (val > threshold)
-  {
-    delay(50);
-    servo.write(startDegs - pressDegs);
-    delay(200);
-    servo.write(startDegs);
-    dodged++;
-    updateLCD();
-    delay(1000); // "debouncing"
-  }
+	if (lightVal > threshold){
+		delay(50);
+		servo.write(startDegs - pressDegs);
+		delay(200);
+		servo.write(startDegs);
+		dodged++;
+		updateLCD();
+		delay(990); // "debouncing"
+	}
+	else{
+		updateLCD();
+	}
 
-  delay(10);
+	delay(10);
 }
