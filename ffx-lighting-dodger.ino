@@ -30,9 +30,9 @@ void updateLCD(){
 	lcd.print(dodged);
 
 	lcd.setCursor(0, 1);
-	lcd.print("Light val.: ");
+	lcd.print("VL: ");
 	lcd.print(lightVal);
-	lcd.print("Max light: ");
+	lcd.print(" VM: ");
 	lcd.print(maxLight);
 }
 
@@ -57,6 +57,7 @@ void loop(){
   
 	if(lightVal > maxLight){
 		maxLight = lightVal;
+      		updateLCD();
 	}
 
 	if (lightVal > threshold){
@@ -67,9 +68,6 @@ void loop(){
 		dodged++;
 		updateLCD();
 		delay(990); // "debouncing"
-	}
-	else{
-		updateLCD();
 	}
 
 	delay(10);
