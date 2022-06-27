@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#include <Wire.h>
 #include <Servo.h>
 #include <LiquidCrystal.h>
 
@@ -50,7 +49,6 @@ void updateLCD(){
 
 void setup(){
     Serial.begin(9600);
-    Wire.begin();
 
     pinMode(photoPin, INPUT);
 
