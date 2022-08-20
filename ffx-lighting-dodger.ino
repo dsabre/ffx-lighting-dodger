@@ -14,11 +14,11 @@ int lightVal = 0, dodged = 0, maxLight = 0, minLight = 9999;
 
 // this value is dependent on the photoresistor and the brightness of your TV
 // you will probably need to test different values here
-int threshold = 350;
+int threshold = 380;
 
 // this sets the starting servo position and the distance traveled for a button press
 // you may need to change these values depending on the servo motor you are using
-int startDegs = 180;
+int startDegs = 159;
 int pressDegs = 15;
 
 void updateLCD(){
